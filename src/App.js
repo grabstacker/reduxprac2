@@ -12,7 +12,7 @@ const initialState = [{
 
 const reducer = (state = initialState, action) =>{
 if (action.type === "NEWUSER"){
-return action.payload
+return ([...state, action.payload])
 }
 }
 
@@ -21,8 +21,9 @@ let store = createStore(reducer)
 store.subscribe(() => console.log(store.getState()))
 
 store.dispatch({type: 'NEWUSER', payload: {user: 'brad',password: 'password'}})
-
-
+store.dispatch({type: 'NEWUSER', payload: {user: 'brad2',password: 'password2'}})
+store.dispatch({type: 'NEWUSER', payload: {user: 'corrina',password: 'password3'}})
+store.dispatch({type: 'DELETEUSER', payload: {user: 'brad',password: 'password4'}})
 
 
 function App() {
